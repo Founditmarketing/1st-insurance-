@@ -21,7 +21,6 @@ const App: React.FC = () => {
     <HelmetProvider>
       <Router>
         <ScrollToTop />
-        <Preloader />
         <div className="min-h-screen flex flex-col w-full overflow-x-hidden">
           <ScrollProgress />
           <Navbar />
