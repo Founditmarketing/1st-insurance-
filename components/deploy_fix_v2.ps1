@@ -8,5 +8,5 @@ Write-Host "Changed directory to project root."
 if ($LASTEXITCODE -ne 0) { Write-Error "gh auth setup-git failed"; exit 1 }
 
 git add .
-git commit -m "Refine app for owner presentation: update constants and index"
+git commit -m "Fix Vercel routing: Add SPA rewrites"
 git push origin main
