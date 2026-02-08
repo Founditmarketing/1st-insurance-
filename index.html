@@ -16,7 +16,8 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    window.addEventListener('load', () => {
+    // Robust tailwind config
+    function configureTailwind() {
       if (window.tailwind) {
         tailwind.config = {
           theme: {
@@ -67,9 +68,12 @@
               addUtilities(newUtilities)
             }
           ]
-        }
+        };
+      } else {
+        setTimeout(configureTailwind, 50);
       }
-    });
+    }
+    configureTailwind();
   </script>
   <style>
     /* Smooth scrolling */
