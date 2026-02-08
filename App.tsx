@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -21,6 +21,7 @@ const App: React.FC = () => {
     <HelmetProvider>
       <Router>
         <ScrollToTop />
+        <Preloader />
         <div className="min-h-screen flex flex-col w-full overflow-x-hidden">
           <ScrollProgress />
           <Navbar />
