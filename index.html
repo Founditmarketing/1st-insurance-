@@ -13,6 +13,12 @@
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap"
     rel="stylesheet">
 
+  <!-- Polyfills for Vite/Process -->
+  <script>
+    window.global = window;
+    window.process = { env: {} };
+  </script>
+
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
