@@ -1,84 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1st Insurance - Marksville | Protecting Families Since 1985</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              brand: {
-                navy: '#0f172a',      // Deep Slate/Navy
-                navyLight: '#1e293b', // Lighter Navy
-                gold: '#f59e0b',      // Vibrant Gold
-                goldHover: '#d97706', // Darker Gold for hover
-                offWhite: '#f8fafc',
-              }
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1st Insurance - Marksville | Protecting Families Since 1985</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0f172a',      // Deep Slate/Navy
+              navyLight: '#1e293b', // Lighter Navy
+              gold: '#f59e0b',      // Vibrant Gold
+              goldHover: '#d97706', // Darker Gold for hover
+              offWhite: '#f8fafc',
+            }
+          },
+          fontFamily: {
+            sans: ['"Open Sans"', 'sans-serif'],
+            heading: ['"Montserrat"', 'sans-serif'],
+          },
+          backgroundImage: {
+            'hero-pattern': "url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')",
+            'map-texture': "url('https://www.transparenttextures.com/patterns/cubes.png')", // Subtle texture example
+          },
+          animation: {
+            marquee: 'marquee 40s linear infinite',
+            shimmer: 'shimmer 2s linear infinite',
+          },
+          keyframes: {
+            marquee: {
+              '0%': { transform: 'translateX(0)' },
+              '100%': { transform: 'translateX(-50%)' },
             },
-            fontFamily: {
-              sans: ['"Open Sans"', 'sans-serif'],
-              heading: ['"Montserrat"', 'sans-serif'],
-            },
-            backgroundImage: {
-              'hero-pattern': "url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')",
-              'map-texture': "url('https://www.transparenttextures.com/patterns/cubes.png')", // Subtle texture example
-            },
-            animation: {
-              marquee: 'marquee 40s linear infinite',
-              shimmer: 'shimmer 2s linear infinite',
-            },
-            keyframes: {
-              marquee: {
-                '0%': { transform: 'translateX(0)' },
-                '100%': { transform: 'translateX(-50%)' },
-              },
-              shimmer: {
-                '0%': { backgroundPosition: '0 0' },
-                '100%': { backgroundPosition: '-200% 0' },
-              }
+            shimmer: {
+              '0%': { backgroundPosition: '0 0' },
+              '100%': { backgroundPosition: '-200% 0' },
             }
           }
         }
-      }
-    </script>
-    <style>
-      /* Smooth scrolling */
-      html {
-        scroll-behavior: smooth;
-      }
-      
-      /* Hide scrollbar for clean carousel */
-      .no-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
-      .no-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
-      
-      /* Global Noise Texture */
-      .bg-noise {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        pointer-events: none;
-        z-index: 50;
-        opacity: 0.05;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-      }
-    </style>
+      },
+      plugins: [
+        function ({ addUtilities }) {
+          const newUtilities = {
+            '.safe-pb': {
+              paddingBottom: 'env(safe-area-inset-bottom)',
+            },
+            '.safe-pt': {
+              paddingTop: 'env(safe-area-inset-top)',
+            },
+          }
+          addUtilities(newUtilities)
+        }
+      ]
+    }
+  </script>
+  <style>
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Hide scrollbar for clean carousel */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Global Noise Texture */
+    .bg-noise {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 50;
+      opacity: 0.05;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+  </style>
   <script type="importmap">
 {
   "imports": {
@@ -95,9 +112,11 @@
 </script>
 
 </head>
-  <body class="bg-brand-offWhite text-slate-800 font-sans antialiased">
-    <div class="bg-noise"></div>
-    <div id="root"></div>
+
+<body class="bg-brand-offWhite text-slate-800 font-sans antialiased">
+  <div class="bg-noise"></div>
+  <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>
+
 </html>

@@ -3,7 +3,7 @@ import { Service, TeamMember, Testimonial, TrustLogo, ClaimContact, Article } fr
 
 export const PHONE_NUMBER = "318-253-9202";
 export const ADDRESS = "121 S Main St, Marksville, LA";
-export const GOOGLE_MAPS_EMBED = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3436.883776472658!2d-92.0682!3d31.1278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8625391697200001%3A0x123456789abcdef!2s121%20S%20Main%20St%2C%20Marksville%2C%20LA%2071351!5e0!3m2!1sen!2sus!4v1610000000000!5m2!1sen!2sus"; // Generic coordinates for demo
+export const GOOGLE_MAPS_EMBED = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3436.883776472658!2d-92.0658422!3d31.1278835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8625391697200001%3A0x123456789abcdef!2s121%20S%20Main%20St%2C%20Marksville%2C%20LA%2071351!5e0!3m2!1sen!2sus!4v1610000000000!5m2!1sen!2sus"; // Updated to center on 121 S Main St
 
 export const NAV_LINKS = [
   { label: 'Home', href: '/' },
