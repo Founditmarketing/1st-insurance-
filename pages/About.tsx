@@ -16,7 +16,7 @@ const About: React.FC = () => {
          <Section className="bg-brand-navy relative overflow-hidden text-white min-h-[50vh] flex items-center">
             {/* Background Image */}
             <div className="absolute inset-0 opacity-20">
-               <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Marksville Office" className="w-full h-full object-cover" />
+               <img src="/section image2.jpg" alt="Marksville Office" className="w-full h-full object-top object-cover" />
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/60 to-transparent"></div>
 
@@ -61,7 +61,7 @@ const About: React.FC = () => {
                <div className="relative">
                   <div className="absolute -inset-4 bg-brand-gold/10 rounded-2xl transform rotate-3"></div>
                   <img
-                     src="https://images.unsplash.com/photo-1577412647305-991150c7d163?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                     src="/theteam.jpg"
                      alt="Historic Marksville"
                      className="rounded-2xl shadow-xl relative z-10 w-full"
                   />

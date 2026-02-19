@@ -20,8 +20,14 @@ const Claims: React.FC = () => {
             description="Need to file an insurance claim? Find direct contact numbers and online portals for Progressive, Travelers, Liberty Mutual, and more."
             canonical="/claims"
          />
-         <Section className="bg-brand-navy text-white text-center pb-32">
-            <div className="max-w-4xl mx-auto">
+         <Section className="bg-brand-navy relative overflow-hidden text-white text-center pb-40 md:pb-40">
+            {/* Background Image */}
+            <div className="absolute inset-0 opacity-20">
+               <img src="/section image.jpg" alt="Claims Background" className="w-full h-full object-cover" />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/60 to-transparent"></div>
+
+            <div className="max-w-4xl mx-auto relative z-10">
                <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full mb-6 border border-white/20">
                   <AlertTriangle size={16} className="text-brand-gold" />
                   <span className="text-sm font-bold uppercase tracking-wider text-brand-gold">Claims Center</span>

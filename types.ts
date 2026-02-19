@@ -11,6 +11,7 @@ export interface Service {
   description: string;
   icon: LucideIcon;
   category: 'personal' | 'commercial';
+  image?: string;
 }
 
 export interface TeamMember {

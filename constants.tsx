@@ -20,21 +20,24 @@ export const SERVICES: Service[] = [
     title: 'Home Insurance',
     description: 'Protect your biggest investment with comprehensive coverage tailored to Louisiana homes.',
     icon: Home,
-    category: 'personal'
+    category: 'personal',
+    image: '/homeinsurance.png'
   },
   {
     id: 'auto',
     title: 'Auto Insurance',
     description: 'Drive with confidence knowing you have the right liability and collision protection.',
     icon: Car,
-    category: 'personal'
+    category: 'personal',
+    image: '/autoinsurance.png'
   },
   {
     id: 'general-liability',
     title: 'General Liability',
     description: 'Essential protection for businesses against claims of bodily injury or property damage.',
     icon: Building2,
-    category: 'commercial'
+    category: 'commercial',
+    image: '/generalliability.png'
   },
   {
     id: 'commercial-auto',
@@ -48,14 +51,16 @@ export const SERVICES: Service[] = [
     title: 'Workers Comp',
     description: 'Mandatory coverage that protects your employees and your business from workplace accidents.',
     icon: Briefcase,
-    category: 'commercial'
+    category: 'commercial',
+    image: '/workercomp.jpg'
   },
   {
     id: 'life',
     title: 'Life Insurance',
     description: 'Secure your family’s financial future tailored to your specific life stage.',
     icon: User,
-    category: 'personal'
+    category: 'personal',
+    image: '/lifeinsurance.png'
   },
   {
     id: 'umbrella',
@@ -77,28 +82,38 @@ export const TEAM: TeamMember[] = [
   {
     id: 'blake',
     name: 'Blake Knoll',
-    role: 'Agency Owner',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Placeholder
-    quote: "We aren't just selling policies; we're protecting our neighbors."
+    role: 'Owner',
+    image: '/Blake Knoll.png',
   },
   {
-    id: 'judy',
-    name: 'Mrs. Judy',
-    role: 'Senior Agent',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Placeholder
-    quote: "I've watched families in this parish grow for 30 years."
+    id: 'christy',
+    name: 'Christy Desoto',
+    role: 'Office Manager / Agent',
+    image: '/Christy Desoto.png',
   },
   {
-    id: 'kayla',
-    name: 'Kayla',
-    role: 'Customer Success',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Placeholder
+    id: 'arnold',
+    name: 'Arnold Bordelon, Jr.',
+    role: 'Personal Line Executive',
+    image: '/Arnold Bordelon, Jr.png',
   },
   {
     id: 'heather',
-    name: 'Heather',
-    role: 'Licensed Agent',
-    image: 'https://images.unsplash.com/photo-1598550874175-4d7112ee5329?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Placeholder
+    name: 'Heather Monk',
+    role: 'Commercial Line Account Executive',
+    image: '/Heather Monk.png',
+  },
+  {
+    id: 'judith',
+    name: 'Judith Desoto',
+    role: 'Receptionist',
+    image: '/Judith Desoto.jpg',
+  },
+  {
+    id: 'layla',
+    name: 'Layla Armand',
+    role: '',
+    image: '/Layla Armond.png',
   }
 ];
 
@@ -164,47 +179,47 @@ export const FAQS = [
 // --- NEW DATA ---
 
 export const CLAIM_CONTACTS: ClaimContact[] = [
-  { 
-    id: 'progressive', 
-    name: 'Progressive', 
-    logo: 'https://logo.clearbit.com/progressive.com', 
-    phone: '1-800-776-4737', 
-    onlineLink: 'https://www.progressive.com/claims/' 
+  {
+    id: 'progressive',
+    name: 'Progressive',
+    logo: 'https://logo.clearbit.com/progressive.com',
+    phone: '1-800-776-4737',
+    onlineLink: 'https://www.progressive.com/claims/'
   },
-  { 
-    id: 'travelers', 
-    name: 'Travelers', 
-    logo: 'https://logo.clearbit.com/travelers.com', 
-    phone: '1-800-252-4633', 
-    onlineLink: 'https://www.travelers.com/claims' 
+  {
+    id: 'travelers',
+    name: 'Travelers',
+    logo: 'https://logo.clearbit.com/travelers.com',
+    phone: '1-800-252-4633',
+    onlineLink: 'https://www.travelers.com/claims'
   },
-  { 
-    id: 'safeco', 
-    name: 'Safeco', 
-    logo: 'https://logo.clearbit.com/safeco.com', 
-    phone: '1-800-332-3226', 
-    onlineLink: 'https://www.safeco.com/claims' 
+  {
+    id: 'safeco',
+    name: 'Safeco',
+    logo: 'https://logo.clearbit.com/safeco.com',
+    phone: '1-800-332-3226',
+    onlineLink: 'https://www.safeco.com/claims'
   },
-  { 
-    id: 'liberty', 
-    name: 'Liberty Mutual', 
-    logo: 'https://logo.clearbit.com/libertymutual.com', 
-    phone: '1-800-225-2467', 
-    onlineLink: 'https://www.libertymutual.com/claims' 
+  {
+    id: 'liberty',
+    name: 'Liberty Mutual',
+    logo: 'https://logo.clearbit.com/libertymutual.com',
+    phone: '1-800-225-2467',
+    onlineLink: 'https://www.libertymutual.com/claims'
   },
-  { 
-    id: 'foremost', 
-    name: 'Foremost', 
-    logo: 'https://logo.clearbit.com/foremost.com', 
-    phone: '1-800-527-3907', 
-    onlineLink: 'https://www.foremost.com/claims/' 
+  {
+    id: 'foremost',
+    name: 'Foremost',
+    logo: 'https://logo.clearbit.com/foremost.com',
+    phone: '1-800-527-3907',
+    onlineLink: 'https://www.foremost.com/claims/'
   },
-  { 
-    id: 'national-general', 
-    name: 'National General', 
-    logo: 'https://logo.clearbit.com/nationalgeneral.com', 
-    phone: '1-800-468-3466', 
-    onlineLink: 'https://www.nationalgeneral.com/claims/' 
+  {
+    id: 'national-general',
+    name: 'National General',
+    logo: 'https://logo.clearbit.com/nationalgeneral.com',
+    phone: '1-800-468-3466',
+    onlineLink: 'https://www.nationalgeneral.com/claims/'
   },
 ];
 

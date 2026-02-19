@@ -21,7 +21,7 @@ const Counter = ({ value, suffix }: { value: number, suffix: string }) => {
   }, [springValue]);
 
   return (
-    <span ref={ref} className="font-heading font-bold text-4xl md:text-5xl text-brand-gold block mb-2">
+    <span ref={ref} className="font-heading font-bold text-4xl md:text-5xl text-brand-navy block mb-2">
       {displayValue}{suffix}
     </span>
   );
@@ -29,17 +29,11 @@ const Counter = ({ value, suffix }: { value: number, suffix: string }) => {
 
 const Stats: React.FC = () => {
   return (
-    <section className="bg-brand-navy py-20 text-white relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10 pointer-events-none">
-         <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-brand-gold rounded-full blur-3xl transform -translate-y-1/2"></div>
-         <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-400 rounded-full blur-3xl transform translate-y-1/2"></div>
-      </div>
-
+    <section className="bg-brand-gold py-20 text-brand-navy relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
           {STATS.map((stat, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -48,7 +42,7 @@ const Stats: React.FC = () => {
               className="text-center"
             >
               <Counter value={stat.value} suffix={stat.suffix} />
-              <span className="text-slate-300 text-sm md:text-base uppercase tracking-wider font-medium">
+              <span className="text-brand-navy/70 text-sm md:text-base uppercase tracking-wider font-bold">
                 {stat.label}
               </span>
             </motion.div>
