@@ -18,6 +18,8 @@ import Resources from './pages/Resources';
 import BlogPost from './pages/BlogPost';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsAndConditions from './pages/TermsAndConditions';
+import RequestProof from './pages/RequestProof';
+import RequestCOI from './pages/RequestCOI';
 
 const App: React.FC = () => {
   return (
@@ -39,6 +41,8 @@ const App: React.FC = () => {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/terms" element={<TermsAndConditions />} />
+              <Route path="/request-proof" element={<RequestProof />} />
+              <Route path="/request-coi" element={<RequestCOI />} />
               {/* Catch all route - redirects to home */}
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>

@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, ChevronDown } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { NAV_LINKS, PHONE_NUMBER } from '../constants';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState<string | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -44,16 +47,59 @@ const Navbar: React.FC = () => {
           {/* Desktop Nav - Reduced space-x to fit more links */}
           <div className="hidden lg:flex items-center space-x-6">
             {NAV_LINKS.map((link) => (
-              <Link
+              <div
                 key={link.label}
-                to={link.href}
-                className={`font-medium transition-colors duration-200 text-xs xl:text-sm uppercase tracking-wider relative group py-2 ${isActive(link.href) ? 'text-white' : 'text-gray-300 hover:text-white'
-                  }`}
+                className="relative group py-2"
+                onMouseEnter={() => link.sublinks && setActiveDropdown(link.label)}
+                onMouseLeave={() => setActiveDropdown(null)}
               >
-                {link.label}
-                <span className={`absolute bottom-0 left-0 h-0.5 bg-brand-gold transition-all duration-300 ${isActive(link.href) ? 'w-full' : 'w-0 group-hover:w-full'
-                  }`}></span>
-              </Link>
+                {link.sublinks ? (
+                  <button
+                    className={`font-medium transition-colors duration-200 text-xs xl:text-sm uppercase tracking-wider flex items-center gap-1 ${isActive(link.href) || activeDropdown === link.label ? 'text-white' : 'text-gray-300 hover:text-white'
+                      }`}
+                  >
+                    {link.label}
+                    <ChevronDown size={14} className={`transition-transform duration-300 ${activeDropdown === link.label ? 'rotate-180' : ''}`} />
+                  </button>
+                ) : (
+                  <Link
+                    to={link.href}
+                    className={`font-medium transition-colors duration-200 text-xs xl:text-sm uppercase tracking-wider relative group ${isActive(link.href) ? 'text-white' : 'text-gray-300 hover:text-white'
+                      }`}
+                  >
+                    {link.label}
+                    <span className={`absolute bottom-0 left-0 h-0.5 bg-brand-gold transition-all duration-300 ${isActive(link.href) ? 'w-full' : 'w-0 group-hover:w-full'
+                      }`}></span>
+                  </Link>
+                )}
+
+                {/* Dropdown Menu */}
+                {link.sublinks && (
+                  <AnimatePresence>
+                    {activeDropdown === link.label && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute top-full left-0 mt-1 w-64 bg-brand-navy border border-white/10 rounded-xl shadow-2xl overflow-hidden z-50"
+                      >
+                        <div className="py-2">
+                          {link.sublinks.map((sublink) => (
+                            <Link
+                              key={sublink.label}
+                              to={sublink.href}
+                              className="block px-6 py-3 text-sm text-gray-300 hover:bg-white/5 hover:text-white hover:pl-8 transition-all duration-200"
+                            >
+                              {sublink.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                )}
+              </div>
             ))}
           </div>
 
@@ -90,17 +136,54 @@ const Navbar: React.FC = () => {
         <div className="lg:hidden bg-brand-navy absolute top-full left-0 w-full shadow-2xl border-t border-white/10 h-[calc(100vh-80px)] overflow-y-auto animate-fade-in z-40 pb-20">
           <div className="px-4 pt-8 pb-3 space-y-3">
             {NAV_LINKS.map((link) => (
-              <Link
-                key={link.label}
-                to={link.href}
-                onClick={() => setIsOpen(false)}
-                className={`block px-4 py-4 rounded-xl text-lg font-bold text-center transition-all ${isActive(link.href)
-                  ? 'bg-white/10 text-brand-gold'
-                  : 'text-white hover:bg-white/5 hover:text-brand-gold'
-                  }`}
-              >
-                {link.label}
-              </Link>
+              <div key={link.label}>
+                {link.sublinks ? (
+                  <div>
+                    <button
+                      onClick={() => setMobileDropdownOpen(mobileDropdownOpen === link.label ? null : link.label)}
+                      className={`w-full flex justify-between items-center px-4 py-4 rounded-xl text-lg font-bold transition-all ${mobileDropdownOpen === link.label ? 'bg-white/10 text-brand-gold' : 'text-white'}`}
+                    >
+                      {link.label}
+                      <ChevronDown size={20} className={`transition-transform duration-300 ${mobileDropdownOpen === link.label ? 'rotate-180' : ''}`} />
+                    </button>
+                    <AnimatePresence>
+                      {mobileDropdownOpen === link.label && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="overflow-hidden bg-white/5 mx-2 rounded-xl mt-1"
+                        >
+                          {link.sublinks.map((sublink) => (
+                            <Link
+                              key={sublink.label}
+                              to={sublink.href}
+                              onClick={() => {
+                                setIsOpen(false);
+                                setMobileDropdownOpen(null);
+                              }}
+                              className="block px-6 py-4 text-white hover:text-brand-gold border-b border-white/5 last:border-0"
+                            >
+                              {sublink.label}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : (
+                  <Link
+                    to={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`block px-4 py-4 rounded-xl text-lg font-bold text-center transition-all ${isActive(link.href)
+                      ? 'bg-white/10 text-brand-gold'
+                      : 'text-white hover:bg-white/5 hover:text-brand-gold'
+                      }`}
+                  >
+                    {link.label}
+                  </Link>
+                )}
+              </div>
             ))}
             <a
               href={`tel:${PHONE_NUMBER}`}
