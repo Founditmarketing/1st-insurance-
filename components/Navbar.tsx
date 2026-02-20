@@ -133,15 +133,15 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="lg:hidden bg-brand-navy absolute top-full left-0 w-full shadow-2xl border-t border-white/10 h-[calc(100vh-80px)] overflow-y-auto animate-fade-in z-40 pb-20">
-          <div className="px-4 pt-8 pb-3 space-y-3">
+        <div className="lg:hidden bg-brand-navy absolute top-full left-0 w-full shadow-2xl border-t border-white/10 h-[calc(100vh-80px)] overflow-y-auto animate-fade-in z-40 pb-10">
+          <div className="px-4 pt-4 pb-3 space-y-1">
             {NAV_LINKS.map((link) => (
               <div key={link.label}>
                 {link.sublinks ? (
                   <div>
                     <button
                       onClick={() => setMobileDropdownOpen(mobileDropdownOpen === link.label ? null : link.label)}
-                      className={`w-full flex justify-center items-center gap-2 px-4 py-4 rounded-xl text-lg font-bold transition-all ${mobileDropdownOpen === link.label ? 'bg-white/10 text-brand-gold' : 'text-white'}`}
+                      className={`w-full flex justify-center items-center gap-2 px-4 py-3 rounded-xl text-lg font-bold transition-all ${mobileDropdownOpen === link.label ? 'bg-white/10 text-brand-gold' : 'text-white'}`}
                     >
                       {link.label}
                       <ChevronDown size={20} className={`transition-transform duration-300 ${mobileDropdownOpen === link.label ? 'rotate-180' : ''}`} />
@@ -162,7 +162,7 @@ const Navbar: React.FC = () => {
                                 setIsOpen(false);
                                 setMobileDropdownOpen(null);
                               }}
-                              className="block px-6 py-4 text-white text-center hover:text-brand-gold border-b border-white/5 last:border-0"
+                              className="block px-6 py-3 text-white text-center hover:text-brand-gold border-b border-white/5 last:border-0"
                             >
                               {sublink.label}
                             </Link>
@@ -175,7 +175,7 @@ const Navbar: React.FC = () => {
                   <Link
                     to={link.href}
                     onClick={() => setIsOpen(false)}
-                    className={`block px-4 py-4 rounded-xl text-lg font-bold text-center transition-all ${isActive(link.href)
+                    className={`block px-4 py-3 rounded-xl text-lg font-bold text-center transition-all ${isActive(link.href)
                       ? 'bg-white/10 text-brand-gold'
                       : 'text-white hover:bg-white/5 hover:text-brand-gold'
                       }`}
@@ -187,7 +187,7 @@ const Navbar: React.FC = () => {
             ))}
             <a
               href={`tel:${PHONE_NUMBER}`}
-              className="block px-3 py-5 mt-8 mx-4 rounded-xl text-xl font-bold bg-brand-gold text-white text-center shadow-lg shadow-brand-gold/30 active:scale-95 transition-transform"
+              className="block px-3 py-4 mt-4 mx-4 rounded-xl text-xl font-bold bg-brand-gold text-white text-center shadow-lg shadow-brand-gold/30 active:scale-95 transition-transform"
             >
               Call Us Now
             </a>
