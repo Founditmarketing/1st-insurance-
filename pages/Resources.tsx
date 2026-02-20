@@ -4,6 +4,7 @@ import TextReveal from '../components/ui/TextReveal';
 import { ARTICLES } from '../constants';
 import { motion } from 'framer-motion';
 import { Clock, ArrowRight, Tag } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 
 const Resources: React.FC = () => {
@@ -28,38 +29,35 @@ const Resources: React.FC = () => {
          <Section className="bg-white pt-0">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                {ARTICLES.map((article, index) => (
-                  <motion.article
+                  <Link
                      key={article.id}
-                     initial={{ opacity: 0, y: 20 }}
-                     whileInView={{ opacity: 1, y: 0 }}
-                     viewport={{ once: true }}
-                     transition={{ delay: index * 0.1 }}
-                     className="group cursor-pointer flex flex-col h-full"
+                     to={`/resources/${article.slug}`}
+                     className="group cursor-pointer flex flex-col h-full bg-white rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500 border border-slate-100"
                   >
-                     <div className="relative overflow-hidden rounded-2xl mb-6 aspect-video shadow-lg">
+                     <div className="relative overflow-hidden aspect-video">
                         <img
                            src={article.image}
                            alt={article.title}
                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
-                        <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-brand-navy flex items-center gap-1 shadow-sm">
-                           <Tag size={12} className="text-brand-gold" />
+                        <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest text-brand-navy flex items-center gap-1.5 shadow-sm border border-slate-100">
+                           <Tag size={10} className="text-brand-gold" />
                            {article.category}
                         </div>
                      </div>
 
-                     <div className="flex flex-col flex-grow">
-                        <div className="flex items-center gap-4 text-xs text-slate-400 mb-3 font-medium uppercase tracking-wide">
+                     <div className="p-8 flex flex-col flex-grow">
+                        <div className="flex items-center gap-4 text-[10px] text-slate-400 mb-4 font-bold uppercase tracking-widest">
                            <span>{article.date}</span>
-                           <span className="w-1 h-1 rounded-full bg-slate-300"></span>
+                           <span className="w-1 h-1 rounded-full bg-brand-gold"></span>
                            <span className="flex items-center gap-1"><Clock size={12} /> {article.readTime}</span>
                         </div>
 
-                        <h2 className="text-2xl font-heading font-bold text-brand-navy mb-3 group-hover:text-brand-gold transition-colors leading-tight">
+                        <h2 className="text-2xl font-heading font-bold text-brand-navy mb-4 group-hover:text-brand-gold transition-colors leading-tight">
                            {article.title}
                         </h2>
 
-                        <p className="text-slate-600 mb-6 leading-relaxed flex-grow">
+                        <p className="text-slate-600 mb-8 leading-relaxed flex-grow text-lg">
                            {article.excerpt}
                         </p>
 
@@ -67,7 +65,7 @@ const Resources: React.FC = () => {
                            Read Article <ArrowRight size={16} className="ml-2 text-brand-gold" />
                         </div>
                      </div>
-                  </motion.article>
+                  </Link>
                ))}
             </div>
          </Section>

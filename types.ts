@@ -19,6 +19,7 @@ export interface TeamMember {
   name: string;
   role: string;
   image: string;
+  email: string;
   quote?: string;
 }
 
@@ -46,10 +47,12 @@ export interface ClaimContact {
 
 export interface Article {
   id: string;
+  slug: string;
   title: string;
   excerpt: string;
   category: string;
   date: string;
   image: string;
   readTime: string;
+  content: string;
 }

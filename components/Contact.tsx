@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Section from './ui/Section';
-import { PHONE_NUMBER, ADDRESS, GOOGLE_MAPS_EMBED } from '../constants';
-import { MapPin, Phone, Clock, CheckCircle, Loader2 } from 'lucide-react';
+import { PHONE_NUMBER, ADDRESS, GOOGLE_MAPS_EMBED, SOCIAL_LINKS } from '../constants';
+import { MapPin, Phone, Clock, CheckCircle, Loader2, Facebook, Instagram } from 'lucide-react';
 import { motion } from 'framer-motion';
 import emailjs from 'emailjs-com';
 
@@ -75,6 +75,30 @@ const Contact: React.FC = () => {
                 <h4 className="font-bold text-brand-navy">Office Hours</h4>
                 <p className="text-slate-600">Mon - Fri: 8:30am - 5:00pm</p>
                 <p className="text-slate-600">Sat - Sun: Closed</p>
+              </div>
+            </div>
+
+            <div className="pt-4">
+              <h4 className="font-bold text-brand-navy mb-4">Follow Us</h4>
+              <div className="flex gap-4">
+                <a
+                  href={SOCIAL_LINKS.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-brand-offWhite p-3 rounded-lg text-brand-navy hover:bg-brand-gold hover:text-white transition-all"
+                  title="Follow on Facebook"
+                >
+                  <Facebook size={20} />
+                </a>
+                <a
+                  href={SOCIAL_LINKS.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-brand-offWhite p-3 rounded-lg text-brand-navy hover:bg-brand-gold hover:text-white transition-all"
+                  title="Follow on Instagram"
+                >
+                  <Instagram size={20} />
+                </a>
               </div>
             </div>
           </div>
@@ -195,8 +219,8 @@ const Contact: React.FC = () => {
               )}
             </button>
 
-            <p className="text-xs text-center text-slate-400 mt-4">
-              By submitting this form, you agree to be contacted by 1st Insurance. We value your privacy.
+            <p className="text-xs text-center text-slate-400 mt-4 leading-relaxed">
+              By submitting this form, you agree to our <a href="/#/terms" className="text-brand-gold hover:underline">Terms & Conditions</a> and <a href="/#/privacy" className="text-brand-gold hover:underline">Privacy Policy</a>. We value your privacy and protect your data.
             </p>
           </form>
         </div>

@@ -75,7 +75,7 @@ const Team: React.FC = () => {
                     <a href={`tel:${PHONE_NUMBER}`} className="p-2 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-brand-gold transition-colors" title="Call">
                       <Phone size={16} />
                     </a>
-                    <a href="#contact" className="p-2 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-brand-gold transition-colors" title="Email">
+                    <a href={`mailto:${member.email}`} className="p-2 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-brand-gold transition-colors" title="Email">
                       <Mail size={16} />
                     </a>
                   </div>

@@ -37,7 +37,7 @@ const Hero: React.FC = () => {
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col md:flex-row items-center justify-between">
 
         {/* Text Content */}
-        <motion.div style={{ opacity }} className="text-center md:text-left text-white max-w-2xl mt-16 md:mt-0">
+        <motion.div style={{ opacity }} className="text-center md:text-left text-white max-w-2xl mt-32 md:mt-0">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

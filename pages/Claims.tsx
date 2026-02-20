@@ -3,7 +3,7 @@ import Section from '../components/ui/Section';
 import TextReveal from '../components/ui/TextReveal';
 import { CLAIM_CONTACTS, PHONE_NUMBER } from '../constants';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, ExternalLink, AlertTriangle, FileText, Search, Building2, Home } from 'lucide-react';
+import { Phone, ExternalLink, AlertTriangle, FileText, Search, Building2, Home, Car, ShieldCheck, Clock, CheckCircle2 } from 'lucide-react';
 import SEO from '../components/SEO';
 
 const Claims: React.FC = () => {
@@ -13,15 +13,44 @@ const Claims: React.FC = () => {
       contact.name.toLowerCase().includes(searchTerm.toLowerCase())
    );
 
+   const timelineSteps = [
+      { title: "File Report", description: "Contact your carrier or our office to get your claim number started.", icon: FileText },
+      { title: "Adjuster Assigned", description: "Wait for a call (usually 24-48h) to schedule your inspection.", icon: Phone },
+      { title: "Inspection", description: "The damage is assessed in person or virtually via photos.", icon: Search },
+      { title: "Resolution", description: "Repairs are authorized or a settlement is issued to you.", icon: CheckCircle2 }
+   ];
+
+   const accidentSteps = {
+      auto: [
+         "Ensure safety and call 911 if there are injuries.",
+         "Take photos of all vehicles, plates, and the scene.",
+         "Exchange contact and insurance info (don't admit fault).",
+         "Get the police report number from the officer."
+      ],
+      home: [
+         "Stop further damage (e.g., tarp a roof, shut off water).",
+         "Take 'Before' photos before cleaning or moving items.",
+         "Keep all receipts for temporary repairs or living expenses.",
+         "Don't throw away damaged items until the adjuster sees them."
+      ],
+      commercial: [
+         "Secure the property and mitigate further risks.",
+         "Get witness statements and contact info immediately.",
+         "Complete an internal incident report for your records.",
+         "Preserve any video footage or relevant documentation."
+      ]
+   };
+
    return (
       <div className="pt-20">
          <SEO
             title="File a Claim"
-            description="Need to file an insurance claim? Find direct contact numbers and online portals for Progressive, Travelers, Liberty Mutual, and more."
+            description="Need to file an insurance claim? Find direct contact numbers and online portals for Progressive, State Farm, GEICO, and more."
             canonical="/claims"
          />
-         <Section className="bg-brand-navy relative overflow-hidden text-white text-center pb-40 md:pb-40">
-            {/* Background Image */}
+
+         {/* Hero Section with Functional Search */}
+         <Section className="bg-brand-navy relative overflow-hidden text-white text-center pb-32">
             <div className="absolute inset-0 opacity-20">
                <img src="/section image.jpg" alt="Claims Background" className="w-full h-full object-cover" />
             </div>
@@ -30,22 +59,18 @@ const Claims: React.FC = () => {
             <div className="max-w-4xl mx-auto relative z-10">
                <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full mb-6 border border-white/20">
                   <AlertTriangle size={16} className="text-brand-gold" />
-                  <span className="text-sm font-bold uppercase tracking-wider text-brand-gold">Claims Center</span>
+                  <span className="text-sm font-bold uppercase tracking-wider text-brand-gold">Claims Support Center</span>
                </div>
-               <TextReveal className="text-3xl md:text-5xl lg:text-6xl font-heading font-extrabold justify-center leading-tight mb-6">
-                  Supporting Louisiana Families & Businesses
+               <TextReveal className="text-4xl md:text-6xl font-heading font-extrabold justify-center leading-tight mb-8 text-white">
+                  We're Here When It Matters Most.
                </TextReveal>
-               <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-10">
-                  We protect both your personal life and your commercial livelihood. Whether you need to file a claim for your home, auto, or business, we are here to guide you through the process.
-               </p>
 
-               {/* Search Bar */}
-               <div className="max-w-md mx-auto relative group">
-                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 group-focus-within:text-brand-gold transition-colors" size={20} />
+               <div className="max-w-2xl mx-auto relative group mb-12">
+                  <Search className="absolute left-6 top-1/2 transform -translate-y-1/2 text-slate-400 group-focus-within:text-brand-gold transition-colors" size={24} />
                   <input
                      type="text"
-                     placeholder="Find your insurance carrier..."
-                     className="w-full pl-12 pr-4 py-4 rounded-full text-brand-navy focus:outline-none focus:ring-4 focus:ring-brand-gold/30 shadow-lg transition-all"
+                     placeholder="Who is your insurance carrier? (e.g. Progressive, State Farm)"
+                     className="w-full pl-16 pr-6 py-5 rounded-2xl text-brand-navy text-lg focus:outline-none focus:ring-4 focus:ring-brand-gold/30 shadow-2xl transition-all"
                      value={searchTerm}
                      onChange={(e) => setSearchTerm(e.target.value)}
                   />
@@ -53,114 +78,197 @@ const Claims: React.FC = () => {
             </div>
          </Section>
 
-         <Section className="bg-brand-offWhite -mt-24 relative z-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-               {/* Agency Help Card - Always visible */}
-               <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="col-span-1 md:col-span-2 lg:col-span-3 bg-white p-8 rounded-2xl shadow-xl border-l-4 border-brand-gold mb-8 flex flex-col md:flex-row items-center justify-between gap-6 ring-1 ring-black/5"
-               >
-                  <div>
-                     <h3 className="text-2xl font-bold text-brand-navy mb-2 flex items-center gap-2">
-                        <span className="bg-brand-gold/20 p-2 rounded-lg text-brand-gold"><Phone size={24} /></span>
-                        Call Us First (Optional)
-                     </h3>
-                     <p className="text-slate-600 max-w-2xl leading-relaxed">
-                        During business hours, we recommend calling our office before filing. Whether it is a <strong>personal auto accident</strong> or a <strong>commercial liability issue</strong>, we can review your policy limits and help you decide the best next steps.
-                     </p>
-                  </div>
-                  <a
-                     href={`tel:${PHONE_NUMBER}`}
-                     className="flex-shrink-0 bg-brand-navy hover:bg-brand-navyLight text-white px-8 py-4 rounded-xl font-bold flex items-center gap-2 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
-                  >
-                     <Phone size={20} />
-                     Call Agency: {PHONE_NUMBER}
-                  </a>
-               </motion.div>
-
-               {/* Carrier Cards */}
-               <AnimatePresence>
-                  {filteredContacts.map((carrier, index) => (
+         {/* Dynamic Results Section */}
+         <Section className="bg-brand-offWhite -mt-20 relative z-10 pt-32">
+            <div className="max-w-6xl mx-auto">
+               <AnimatePresence mode="popLayout">
+                  {searchTerm && (
                      <motion.div
-                        layout
-                        key={carrier.id}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.9 }}
-                        transition={{ duration: 0.2 }}
-                        className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col h-full group"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20"
                      >
-                        <div className="flex items-center justify-between mb-6">
-                           <img src={carrier.logo} alt={carrier.name} className="h-8 object-contain max-w-[140px]" />
-                           <div className="w-10 h-10 rounded-full bg-brand-offWhite flex items-center justify-center group-hover:bg-brand-gold/10 transition-colors">
-                              <FileText size={20} className="text-slate-400 group-hover:text-brand-gold" />
+                        {filteredContacts.map((carrier) => (
+                           <motion.div
+                              key={carrier.id}
+                              layout
+                              className="bg-white p-6 rounded-2xl shadow-xl border border-brand-gold/20 flex flex-col h-full ring-2 ring-brand-gold/5"
+                           >
+                              <div className="flex items-center justify-between mb-6">
+                                 <img src={carrier.logo} alt={carrier.name} className="h-10 object-contain max-w-[150px]" />
+                                 <div className="w-10 h-10 rounded-full bg-brand-gold/10 flex items-center justify-center text-brand-gold">
+                                    <ShieldCheck size={20} />
+                                 </div>
+                              </div>
+                              <h3 className="text-xl font-bold text-brand-navy mb-4">{carrier.name}</h3>
+                              <div className="space-y-3 mt-auto">
+                                 <a
+                                    href={`tel:${carrier.phone}`}
+                                    className="flex items-center justify-center gap-3 w-full py-4 bg-brand-navy hover:bg-brand-navyLight text-white font-bold rounded-xl transition-all shadow-md"
+                                 >
+                                    <Phone size={18} />
+                                    {carrier.phone}
+                                 </a>
+                                 <a
+                                    href={carrier.onlineLink}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="flex items-center justify-center gap-2 w-full py-3 text-brand-navy hover:text-brand-gold font-bold transition-all"
+                                 >
+                                    File Claim Online
+                                    <ExternalLink size={16} />
+                                 </a>
+                              </div>
+                           </motion.div>
+                        ))}
+                        {filteredContacts.length === 0 && (
+                           <div className="col-span-full bg-white p-12 rounded-3xl shadow-lg text-center">
+                              <p className="text-xl text-slate-500 mb-4">We couldn't find a carrier matching "{searchTerm}".</p>
+                              <p className="text-slate-400">Please call our office directly at {PHONE_NUMBER} and we'll find your info for you.</p>
                            </div>
-                        </div>
-
-                        <h3 className="text-lg font-bold text-brand-navy mb-auto">{carrier.name}</h3>
-
-                        <div className="space-y-3 mt-6">
-                           <a
-                              href={`tel:${carrier.phone}`}
-                              className="flex items-center justify-center gap-2 w-full py-3 bg-brand-offWhite hover:bg-brand-navy hover:text-white text-brand-navy font-bold rounded-lg transition-colors"
-                           >
-                              <Phone size={18} />
-                              {carrier.phone}
-                           </a>
-                           <a
-                              href={carrier.onlineLink}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="flex items-center justify-center gap-2 w-full py-3 border border-gray-200 text-slate-600 hover:text-brand-gold hover:border-brand-gold font-medium rounded-lg transition-all"
-                           >
-                              File Online
-                              <ExternalLink size={16} />
-                           </a>
-                        </div>
+                        )}
                      </motion.div>
-                  ))}
+                  )}
                </AnimatePresence>
 
-               {filteredContacts.length === 0 && (
-                  <div className="col-span-full text-center py-12 text-slate-500">
-                     <p>No carrier found matching "{searchTerm}". Please call us for assistance.</p>
+               {/* Guidance: Call Us vs Carrier */}
+               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
+                  <div className="bg-white p-8 md:p-10 rounded-3xl shadow-xl border-t-8 border-brand-gold relative overflow-hidden">
+                     <div className="absolute right-[-20px] top-[-20px] text-brand-gold/5 transform rotate-12">
+                        <Phone size={150} />
+                     </div>
+                     <h3 className="text-2xl font-bold text-brand-navy mb-4 flex items-center gap-3">
+                        <div className="bg-brand-gold/20 p-2 rounded-lg text-brand-gold"><Phone size={24} /></div>
+                        Step 1: The "Call Us" Rule
+                     </h3>
+                     <p className="text-slate-600 leading-relaxed mb-6">
+                        <strong>During business hours (8:30am - 5:00pm), call us FIRST.</strong> We can review your deductible versus the expected damage. If the repair cost is close to your deductible, filing a claim might not be in your best financial interest due to potential rate increases.
+                     </p>
+                     <a href={`tel:${PHONE_NUMBER}`} className="inline-flex items-center gap-2 text-brand-gold font-bold hover:gap-4 transition-all">
+                        Call Local Agency {PHONE_NUMBER} <ExternalLink size={16} />
+                     </a>
                   </div>
-               )}
-            </div>
-         </Section>
 
-         {/* Emergency Checklist Section */}
-         <Section className="bg-white pt-0">
-            <div className="max-w-4xl mx-auto">
-               <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-brand-navy font-heading mb-2">Immediate Steps After an Incident</h3>
-                  <p className="text-slate-500">Applicable for both personal and commercial accidents.</p>
+                  <div className="bg-brand-navy p-8 md:p-10 rounded-3xl shadow-xl border-t-8 border-brand-gold text-white relative overflow-hidden">
+                     <div className="absolute right-[-20px] top-[-20px] text-white/5 transform rotate-12">
+                        <Clock size={150} />
+                     </div>
+                     <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
+                        <div className="bg-white/10 p-2 rounded-lg text-brand-gold"><Clock size={24} /></div>
+                        After Hours?
+                     </h3>
+                     <p className="text-slate-300 leading-relaxed mb-6">
+                        If you have a true emergency at night or over the weekend (like a major pipe burst or a fire), don't wait. Use the search bar above to find your carrier's 24/7 direct claims line and get your claim number immediately.
+                     </p>
+                     <button
+                        onClick={() => {
+                           window.scrollTo({ top: 0, behavior: 'smooth' });
+                           document.querySelector('input')?.focus();
+                        }}
+                        className="text-brand-gold font-bold hover:underline"
+                     >
+                        Search carrier numbers above
+                     </button>
+                  </div>
                </div>
 
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {[
-                     { title: "Ensure Safety", text: "Move to a safe location. If this is a workplace incident or auto accident, check for injuries and call 911 immediately." },
-                     { title: "Document Everything", text: "Take photos of damage, the scene, and equipment. For businesses, secure incident reports. Do not admit fault at the scene." },
-                     { title: "Exchange Information", text: "Get names and contact info of all parties. If commercial, get witness statements." },
-                     { title: "Call The Police", text: "A police or incident report is often required for filing a claim, especially if there are injuries or significant property damage." }
-                  ].map((step, i) => (
-                     <motion.div
-                        key={i}
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: i * 0.1 }}
-                        className="flex gap-4 p-6 border border-gray-100 rounded-xl hover:bg-brand-offWhite transition-colors hover:shadow-sm"
-                     >
-                        <div className="w-10 h-10 rounded-full bg-brand-gold/10 text-brand-gold flex items-center justify-center font-bold flex-shrink-0 text-lg">
-                           {i + 1}
+               {/* Situation Specific Checklists */}
+               <div className="mb-20">
+                  <h3 className="text-3xl font-heading font-bold text-brand-navy text-center mb-12">What to do right now:</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
+                     {/* Auto */}
+                     <div className="bg-[#1a2b4b] p-8 rounded-3xl shadow-lg h-full border-b-4 border-brand-gold">
+                        <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center mb-6 text-brand-gold">
+                           <Car size={28} />
                         </div>
-                        <div>
-                           <h4 className="font-bold text-brand-navy text-lg mb-1">{step.title}</h4>
-                           <p className="text-sm text-slate-600 leading-relaxed">{step.text}</p>
+                        <h4 className="text-xl font-bold mb-6">Auto Accident</h4>
+                        <ul className="space-y-4">
+                           {accidentSteps.auto.map((step, i) => (
+                              <li key={i} className="flex gap-3 text-sm text-slate-300 leading-relaxed">
+                                 <span className="text-brand-gold font-bold mt-0.5">•</span>
+                                 {step}
+                              </li>
+                           ))}
+                        </ul>
+                     </div>
+
+                     {/* Home */}
+                     <div className="bg-[#1a2b4b] p-8 rounded-3xl shadow-lg h-full border-b-4 border-brand-gold">
+                        <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center mb-6 text-brand-gold">
+                           <Home size={28} />
                         </div>
-                     </motion.div>
-                  ))}
+                        <h4 className="text-xl font-bold mb-6">Property Damage</h4>
+                        <ul className="space-y-4">
+                           {accidentSteps.home.map((step, i) => (
+                              <li key={i} className="flex gap-3 text-sm text-slate-300 leading-relaxed">
+                                 <span className="text-brand-gold font-bold mt-0.5">•</span>
+                                 {step}
+                              </li>
+                           ))}
+                        </ul>
+                     </div>
+
+                     {/* Commercial */}
+                     <div className="bg-[#1a2b4b] p-8 rounded-3xl shadow-lg h-full border-b-4 border-brand-gold">
+                        <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center mb-6 text-brand-gold">
+                           <Building2 size={28} />
+                        </div>
+                        <h4 className="text-xl font-bold mb-6">Commercial Incident</h4>
+                        <ul className="space-y-4">
+                           {accidentSteps.commercial.map((step, i) => (
+                              <li key={i} className="flex gap-3 text-sm text-slate-300 leading-relaxed">
+                                 <span className="text-brand-gold font-bold mt-0.5">•</span>
+                                 {step}
+                              </li>
+                           ))}
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+
+               {/* Timeline Section */}
+               <div className="bg-white p-10 md:p-16 rounded-[3rem] shadow-xl border border-slate-100 mb-20">
+                  <div className="text-center mb-16">
+                     <h3 className="text-3xl font-heading font-bold text-brand-navy mb-4">What happens next?</h3>
+                     <p className="text-slate-500 max-w-2xl mx-auto italic">Understanding the claims journey from start to finish.</p>
+                  </div>
+
+                  <div className="relative">
+                     {/* Connector Line */}
+                     <div className="hidden lg:block absolute top-[40px] left-[10%] right-[10%] h-0.5 bg-slate-100"></div>
+
+                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+                        {timelineSteps.map((step, i) => {
+                           const Icon = step.icon;
+                           return (
+                              <div key={i} className="relative z-10">
+                                 <div className="w-20 h-20 bg-brand-offWhite rounded-3xl flex items-center justify-center mx-auto mb-6 text-brand-navy border-2 border-white shadow-lg ring-1 ring-black/5 hover:scale-110 hover:bg-brand-gold transition-all duration-300 group">
+                                    <Icon className="group-hover:text-white transition-colors" size={32} />
+                                    <span className="absolute -top-3 -right-3 w-8 h-8 bg-brand-navy text-brand-gold text-xs font-bold rounded-full flex items-center justify-center border-4 border-white">
+                                       {i + 1}
+                                    </span>
+                                 </div>
+                                 <h4 className="font-bold text-brand-navy text-lg mb-2">{step.title}</h4>
+                                 <p className="text-sm text-slate-500 leading-relaxed px-4">{step.description}</p>
+                              </div>
+                           );
+                        })}
+                     </div>
+                  </div>
+               </div>
+
+               {/* Claims Toolkit */}
+               <div className="max-w-4xl mx-auto text-center border-2 border-dashed border-brand-gold/30 rounded-[2rem] p-10 bg-brand-gold/5">
+                  <h3 className="text-2xl font-bold text-brand-navy mb-6">The Claims Toolkit</h3>
+                  <p className="text-slate-600 mb-8">Have this information ready when you call to make the process smoother:</p>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                     {["Policy Number", "Date & Time", "Police Report #", "Photos of Loss"].map((item, i) => (
+                        <div key={i} className="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-brand-navy font-bold text-sm">
+                           {item}
+                        </div>
+                     ))}
+                  </div>
                </div>
             </div>
          </Section>

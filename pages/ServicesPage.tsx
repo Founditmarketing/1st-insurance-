@@ -116,9 +116,9 @@ const ServicesPage: React.FC = () => {
 
          <FAQ />
 
-         <Section className="bg-brand-navy text-center py-24">
-            <h2 className="text-3xl md:text-4xl text-white font-heading font-bold mb-8">Ready to review your coverage?</h2>
-            <a href={`tel:${PHONE_NUMBER}`} className="inline-block bg-brand-gold hover:bg-brand-goldHover text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-brand-gold/50 transition-all transform hover:-translate-y-1">
+         <Section className="bg-brand-gold text-center py-24">
+            <h2 className="text-3xl md:text-4xl text-brand-navy font-heading font-bold mb-8">Ready to review your coverage?</h2>
+            <a href={`tel:${PHONE_NUMBER}`} className="inline-block bg-brand-navy hover:bg-brand-navyLight text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-brand-navy/50 transition-all transform hover:-translate-y-1">
                Call {PHONE_NUMBER}
             </a>
          </Section>

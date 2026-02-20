@@ -15,6 +15,9 @@ import ServicesPage from './pages/ServicesPage';
 import ContactPage from './pages/ContactPage';
 import Claims from './pages/Claims';
 import Resources from './pages/Resources';
+import BlogPost from './pages/BlogPost';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsAndConditions from './pages/TermsAndConditions';
 
 const App: React.FC = () => {
   return (
@@ -32,7 +35,10 @@ const App: React.FC = () => {
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/claims" element={<Claims />} />
               <Route path="/resources" element={<Resources />} />
+              <Route path="/resources/:slug" element={<BlogPost />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/terms" element={<TermsAndConditions />} />
               {/* Catch all route - redirects to home */}
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
