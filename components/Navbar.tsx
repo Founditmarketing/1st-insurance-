@@ -141,7 +141,7 @@ const Navbar: React.FC = () => {
                   <div>
                     <button
                       onClick={() => setMobileDropdownOpen(mobileDropdownOpen === link.label ? null : link.label)}
-                      className={`w-full flex justify-between items-center px-4 py-4 rounded-xl text-lg font-bold transition-all ${mobileDropdownOpen === link.label ? 'bg-white/10 text-brand-gold' : 'text-white'}`}
+                      className={`w-full flex justify-center items-center gap-2 px-4 py-4 rounded-xl text-lg font-bold transition-all ${mobileDropdownOpen === link.label ? 'bg-white/10 text-brand-gold' : 'text-white'}`}
                     >
                       {link.label}
                       <ChevronDown size={20} className={`transition-transform duration-300 ${mobileDropdownOpen === link.label ? 'rotate-180' : ''}`} />
@@ -162,7 +162,7 @@ const Navbar: React.FC = () => {
                                 setIsOpen(false);
                                 setMobileDropdownOpen(null);
                               }}
-                              className="block px-6 py-4 text-white hover:text-brand-gold border-b border-white/5 last:border-0"
+                              className="block px-6 py-4 text-white text-center hover:text-brand-gold border-b border-white/5 last:border-0"
                             >
                               {sublink.label}
                             </Link>
