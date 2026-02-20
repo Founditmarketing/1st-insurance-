@@ -51,8 +51,7 @@ const RequestProof: React.FC = () => {
 
             {/* Header */}
             <Section className="bg-brand-navy relative overflow-hidden text-white pt-24 pb-16">
-                <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] animate-pulse"></div>
-                <div className="relative z-10 max-w-4xl mx-auto text-center">
+                <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.5 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -61,7 +60,7 @@ const RequestProof: React.FC = () => {
                         <Shield size={16} />
                         Fast & Secure Requests
                     </motion.div>
-                    <TextReveal className="text-4xl md:text-6xl font-heading font-extrabold leading-tight mb-6">
+                    <TextReveal className="text-4xl md:text-6xl font-heading font-extrabold justify-center leading-tight mb-6">
                         Request Proof of Insurance
                     </TextReveal>
                     <p className="text-slate-300 text-lg max-w-2xl mx-auto">
@@ -101,7 +100,7 @@ const RequestProof: React.FC = () => {
                                 </div>
                                 {/* Insured Email */}
                                 <div className="md:col-span-2 space-y-2">
-                                    <label className="text-sm font-bold text-brand-navy uppercase tracking-wider">Email Address</label>
+                                    <label className="text-sm font-bold text-brand-navy uppercase tracking-wider">Insured Email Address</label>
                                     <input
                                         required
                                         type="email"
@@ -158,7 +157,7 @@ const RequestProof: React.FC = () => {
                                         className="mt-1 w-5 h-5 rounded border-slate-300 text-brand-gold focus:ring-brand-gold"
                                     />
                                     <span className="text-sm text-slate-500 leading-relaxed">
-                                        By checking this box, I agree to receive conversational and/or marketing text messages from 1st Insurance using the contact information provided. Message frequency may vary. Message and data rates may apply. Text HELP for help. Text STOP to opt out at any time.
+                                        By checking this box, I agree to receive conversational and/or marketing text messages from 1st Insurance using the contact information provided. Message frequency may vary. Message and data rates may apply. Text HELP for help. Text STOP to opt out at any time. View our <a href="/#/privacy" className="text-brand-gold hover:underline">Privacy Policy</a> and <a href="/#/terms" className="text-brand-gold hover:underline">Terms & Conditions</a>.
                                     </span>
                                 </label>
                             </div>
